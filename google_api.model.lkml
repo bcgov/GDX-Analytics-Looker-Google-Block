@@ -18,4 +18,3 @@ explore: google_search {
     relationship: one_to_one
   }
 }
-#fsd
