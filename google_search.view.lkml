@@ -115,6 +115,11 @@ view: google_search {
     dimension: query {
       type: string
       sql: ${TABLE}.query;;
+      link: {
+        label: "View Search"
+        url: "https://google.ca/search?q={{ value }}"
+        icon_url: "https://looker.com/favicon.ico"
+      }
     }
     dimension: country {
       type: string
@@ -127,8 +132,17 @@ view: google_search {
     dimension: page {
       type: string
       sql: ${TABLE}.page;;
+      drill_fields: [google_search.query]
+      link: {
+        label: "Visit Page"
+        url: "{{ value }}"
+        icon_url: "https://looker.com/favicon.ico"
+      }
     }
-
+    dimension: site {
+      type: string
+      sql:  ${TABLE}.site ;;
+    }
     dimension: position {
       type: number
       sql: ${TABLE}.position;;

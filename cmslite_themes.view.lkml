@@ -42,6 +42,7 @@ view: cmslite_themes {
   dimension: theme {
     type: string
     sql: ${TABLE}.theme ;;
+    drill_fields: [google_search.page, google_search.query]
   }
   dimension: theme_id {
     type: string
