@@ -13,7 +13,8 @@ view: google_search {
       dd.sbcquarter, dd.lastdayofpsapayperiod::date
       FROM google.googlesearch AS gs
       JOIN servicebc.datedimension AS dd on date::date = dd.datekey::date
-      LEFT JOIN cmslite.metadata AS cms ON cms.hr_url = page
+      -- fix for misreporting of redirected front page URL in Google search
+      LEFT JOIN cmslite.metadata AS cms ON (cms.hr_url = page) OR (cms.hr_url = 'https://www2.gov.bc.ca/gov/content/home' and page = 'https://www2.gov.bc.ca/')
       ;;
 
       sql_trigger_value: SELECT FLOOR((EXTRACT(epoch from GETDATE()) - 60*60*7)/(60*60*24)) ;;
