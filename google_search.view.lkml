@@ -3,6 +3,7 @@ view: google_search {
     sql:
       SELECT gs.*,
       node_id,
+      SPLIT_PART(site, '/',3) as page_urlhost,
       CASE WHEN (SPLIT_PART(page, '?',1) = 'https://www2.gov.bc.ca/gov/search')
             THEN 'Search'
             ELSE SPLIT_PART(cms.dcterms_creator, '|', 2)
@@ -138,6 +139,11 @@ view: google_search {
         url: "{{ value }}"
         icon_url: "https://looker.com/favicon.ico"
       }
+    }
+
+    dimension: page_urlhost {
+      type: string
+      sql: ${TABLE}.page_urlhost ;;
     }
     dimension: site {
       type: string
