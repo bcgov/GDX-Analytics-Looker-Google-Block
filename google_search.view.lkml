@@ -14,7 +14,7 @@ view: google_search {
       FROM google.googlesearch AS gs
       JOIN servicebc.datedimension AS dd on date::date = dd.datekey::date
       -- fix for misreporting of redirected front page URL in Google search
-      LEFT JOIN cmslite.metadata AS cms ON (cms.hr_url = page) OR (cms.hr_url = 'https://www2.gov.bc.ca/gov/content/home' and page = 'https://www2.gov.bc.ca/')
+      LEFT JOIN cmslite.metadata AS cms ON CASE WHEN page = 'https://www2.gov.bc.ca/' THEN 'https://www2.gov.bc.ca/gov/content/home' ELSE page END = cms.hr_url
       ;;
 
       sql_trigger_value: SELECT FLOOR((EXTRACT(epoch from GETDATE()) - 60*60*7)/(60*60*24)) ;;
