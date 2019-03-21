@@ -116,6 +116,7 @@ view: google_search {
     dimension: query {
       type: string
       sql: ${TABLE}.query;;
+      drill_fields: [page,country]
       link: {
         label: "View Search"
         url: "https://google.ca/search?q={{ value }}"
@@ -124,6 +125,7 @@ view: google_search {
     }
     dimension: country {
       type: string
+      drill_fields: [page,query]
       sql: ${TABLE}.country;;
     }
     dimension: device {
