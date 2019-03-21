@@ -19,6 +19,11 @@ explore: google_search {
   }
 
   access_filter: {
+    field: node_id
+    user_attribute: node_id
+  }
+
+  access_filter: {
     field: page_urlhost
     user_attribute: urlhost
   }
