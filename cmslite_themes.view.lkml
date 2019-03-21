@@ -42,7 +42,9 @@ view: cmslite_themes {
   dimension: theme {
     type: string
     sql: ${TABLE}.theme ;;
-    drill_fields: [google_search.page, google_search.query]
+    drill_fields: [google_search.page, google_search.query, subtheme]
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.theme
   }
   dimension: theme_id {
     type: string
@@ -52,6 +54,9 @@ view: cmslite_themes {
   dimension: subtheme {
     type: string
     sql: ${TABLE}.subtheme ;;
+    drill_fields: [google_search.page, google_search.query]
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.subtheme
   }
   dimension: subtheme_id {
     type: string

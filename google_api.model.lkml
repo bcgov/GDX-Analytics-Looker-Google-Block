@@ -17,4 +17,13 @@ explore: google_search {
     sql_on: ${google_search.node_id} = ${cmslite_themes.node_id} ;;
     relationship: one_to_one
   }
+
+  access_filter: {
+    field: page_urlhost
+    user_attribute: urlhost
+  }
+  access_filter: {
+    field: cmslite_themes.theme_id
+    user_attribute: theme
+  }
 }
