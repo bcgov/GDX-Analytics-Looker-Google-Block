@@ -24,7 +24,7 @@ explore: google_search {
   }
 
   access_filter: {
-    field: page_urlhost
+    field: page_urlhost_filter
     user_attribute: urlhost
   }
   access_filter: {
