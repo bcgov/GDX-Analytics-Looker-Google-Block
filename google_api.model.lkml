@@ -24,9 +24,10 @@ explore: google_search {
   }
 
   access_filter: {
-    field: page_urlhost_filter
+    field: page_urlhost
     user_attribute: urlhost
   }
+
   access_filter: {
     field: cmslite_themes.theme_id
     user_attribute: theme
