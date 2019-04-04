@@ -149,16 +149,6 @@ view: google_search {
       sql: ${TABLE}.page_urlhost ;;
     }
 
-    dimension: page_urlhost_filter {
-      description: "Temporary fix for bug in CLD-2823"
-      type: string
-      sql: CASE
-         WHEN LOWER(${TABLE}.page_urlhost) = 'www2.gov.bc.ca' THEN 'https://www2.gov.bc.ca'
-         WHEN LOWER(${TABLE}.page_urlhost) = 'intranet.gov.bc.ca' THEN 'https://intranet.gov.bc.ca'
-         ELSE LOWER(${TABLE}.page_urlhost) END
-      ;;
-      hidden: yes
-    }
     dimension: site {
       type: string
       sql:  ${TABLE}.site ;;
