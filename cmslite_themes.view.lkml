@@ -1,3 +1,7 @@
+# ================================================================================
+# NOTE: Changes here should be replicated in https://analytics.gov.bc.ca/projects/snowplow_web_block/files/cmslite_themes.view.lkml
+# ================================================================================
+
 view: cmslite_themes {
   derived_table: {
     sql: WITH ids AS (
@@ -41,7 +45,7 @@ view: cmslite_themes {
 
   dimension: theme {
     type: string
-    sql: ${TABLE}.theme ;;
+    sql: COALESCE(${TABLE}.theme, '(no theme)') ;;
     drill_fields: [google_search.page, google_search.query, subtheme]
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.theme
@@ -53,7 +57,7 @@ view: cmslite_themes {
 
   dimension: subtheme {
     type: string
-    sql: ${TABLE}.subtheme ;;
+    sql: COALESCE(${TABLE}.subtheme, '(no subtheme)') ;;
     drill_fields: [google_search.page, google_search.query]
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.subtheme
