@@ -32,4 +32,14 @@ explore: google_search {
     field: cmslite_themes.theme_id
     user_attribute: theme
   }
+  access_filter: {
+    field: cmslite_themes.subtheme_id
+    user_attribute: subtheme
+  }
+  access_filter: {
+    field: cmslite_themes.topic_id
+    user_attribute: topic
+  }
+
+
 }

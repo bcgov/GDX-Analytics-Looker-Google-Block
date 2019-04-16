@@ -41,7 +41,7 @@ view: google_search {
       group_label: "Date"
     }
     dimension: week {
-      type:  date_week_of_year
+      type:  date_week
       sql:  ${TABLE}.date ;;
       group_label: "Date"
     }
@@ -136,7 +136,7 @@ view: google_search {
     dimension: page {
       type: string
       sql: ${TABLE}.page;;
-      drill_fields: [google_search.query]
+      drill_fields: [google_search.query, country]
       link: {
         label: "Visit Page"
         url: "{{ value }}"
