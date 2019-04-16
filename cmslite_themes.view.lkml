@@ -18,7 +18,7 @@ view: cmslite_themes {
   dimension: theme {
     description: "The CMS Lite theme."
     type: string
-    drill_fields: [subtheme,topic]
+    drill_fields: [subtheme, topic, google_search.query]
     sql: COALESCE(${TABLE}.theme, '(no theme)') ;;
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.theme
@@ -43,7 +43,7 @@ view: cmslite_themes {
   dimension: subtheme {
     description: "The CMS Lite subtheme."
     type: string
-    drill_fields: [topic]
+    drill_fields: [topic, google_search.query]
     sql: COALESCE(${TABLE}.subtheme, '(no subtheme)') ;;
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.subtheme
