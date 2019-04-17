@@ -9,11 +9,11 @@ include: "*.view"
 
 
 explore: google_search {
-  join: cmslite_themes {
-    type: left_outer
-    sql_on: ${google_search.node_id} = ${cmslite_themes.node_id} ;;
-    relationship: one_to_one
-  }
+  #join: cmslite_themes {
+  #  type: left_outer
+  #  sql_on: ${google_search.node_id} = ${cmslite_themes.node_id} ;;
+  #  relationship: one_to_one
+  #}
 
   access_filter: {
     field: node_id
@@ -26,15 +26,33 @@ explore: google_search {
   }
 
   access_filter: {
-    field: cmslite_themes.theme_id
+    field: google_search.theme_id
     user_attribute: theme
   }
   access_filter: {
-    field: cmslite_themes.subtheme_id
+    field: google_search.subtheme_id
     user_attribute: subtheme
   }
   access_filter: {
-    field: cmslite_themes.topic_id
+    field: google_search.topic_id
+    user_attribute: topic
+  }
+}
+
+# hidden theme_cache explore supports suggest_explore for theme and subtheme filters
+explore: theme_cache {
+  hidden: yes
+
+  access_filter: {
+    field: theme_id
+    user_attribute: theme
+  }
+  access_filter: {
+    field: subtheme_id
+    user_attribute: subtheme
+  }
+  access_filter: {
+    field: topic_id
     user_attribute: topic
   }
 }

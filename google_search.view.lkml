@@ -1,26 +1,5 @@
 view: google_search {
-  derived_table: {
-    sql:
-      SELECT gs.*,
-      node_id,
-      SPLIT_PART(site, '/',3) as page_urlhost,
-      CASE WHEN (SPLIT_PART(page, '?',1) = 'https://www2.gov.bc.ca/gov/search')
-            THEN 'Search'
-            ELSE SPLIT_PART(cms.dcterms_creator, '|', 2)
-            END AS page_owner,
-      dd.isweekend::BOOLEAN,
-      dd.isholiday::BOOLEAN,
-      dd.sbcquarter, dd.lastdayofpsapayperiod::date
-      FROM google.googlesearch AS gs
-      JOIN servicebc.datedimension AS dd on date::date = dd.datekey::date
-      -- fix for misreporting of redirected front page URL in Google search
-      LEFT JOIN cmslite.metadata AS cms ON CASE WHEN page = 'https://www2.gov.bc.ca/' THEN 'https://www2.gov.bc.ca/gov/content/home' ELSE page END = cms.hr_url
-      ;;
-
-      sql_trigger_value: SELECT FLOOR((EXTRACT(epoch from GETDATE()) - 60*60*7)/(60*60*24)) ;;
-      distribution_style: all
-
-    }
+  sql_table_name: cmslite.google_pdt ;;
 
     ###
     filter: yesno_filter {
@@ -30,10 +9,6 @@ view: google_search {
     dimension: node_id {
       type: string
       sql:  ${TABLE}.node_id ;;
-    }
-    dimension: page_owner {
-      type: string
-      sql:  ${TABLE}.page_owner ;;
     }
     dimension: date {
       type:  date
@@ -136,7 +111,7 @@ view: google_search {
     dimension: page {
       type: string
       sql: ${TABLE}.page;;
-      drill_fields: [google_search.query, country]
+      drill_fields: [query,country]
       link: {
         label: "Visit Page"
         url: "{{ value }}"
@@ -206,4 +181,70 @@ view: google_search {
       sql: ${TABLE}.impressions;;
       group_label: "Averages"
     }
+
+  # node_id
+  # the CMSL node ID
+
+  # theme
+  # the CMSL theme
+  dimension: theme {
+    description: "The CMS Lite theme."
+    type: string
+    drill_fields: [subtheme, topic, google_search.query]
+    sql: COALESCE(${TABLE}.theme, '(no theme)') ;;
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.theme
+  }
+
+  # node_id
+  # the CMSL theme ID
+  #
+  # the COALESCSE expression ensures that a blank value is returned in the
+  # case where the ${TABLE}.theme_id value is missing or null; ensurinig that
+  # user attribute filters will continue to work.
+  #
+  # reference - https://docs.aws.amazon.com/redshift/latest/dg/r_NVL_function.html
+  dimension: theme_id {
+    description: "The alphanumeric CMS Lite theme identifer."
+    type: string
+    sql: COALESCE(${TABLE}.theme_id,'') ;;
+  }
+
+  # subtheme
+  # the CMSL subtheme
+  dimension: subtheme {
+    description: "The CMS Lite subtheme."
+    type: string
+    drill_fields: [topic, google_search.query]
+    sql: COALESCE(${TABLE}.subtheme, '(no subtheme)') ;;
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.subtheme
+  }
+
+  # subtheme ID
+  # the CMSL subtheme ID
+  dimension: subtheme_id {
+    description: "The alphanumeric CMS Lite subtheme identifier."
+    type: string
+    sql: COALESCE(${TABLE}.subtheme_id,'');;
+  }
+
+  # topic
+  # the CMSL topic
+  dimension: topic {
+    description: "The CMS Lite topic."
+    type: string
+    sql: COALESCE(${TABLE}.topic, '(no topic)') ;;
+    drill_fields: [google_search.query]
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.topic
+  }
+
+  # topic ID
+  # the CMSL topic ID
+  dimension: topic_id {
+    description: "The alphanumeric CMS Lite topic identifier."
+    type: string
+    sql: COALESCE(${TABLE}.topic_id,'') ;;
+  }
   }
