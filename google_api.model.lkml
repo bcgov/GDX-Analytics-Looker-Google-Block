@@ -37,8 +37,4 @@ explore: google_search {
     field: cmslite_themes.topic_id
     user_attribute: topic
   }
-  access_filter: {
-    field: cmslite_themes.esb
-    user_attribute: esb
-  }
 }
