@@ -9,6 +9,7 @@ include: "*.view"
 
 
 explore: google_search {
+  persist_for: "2 hours"
   #join: cmslite_themes {
   #  type: left_outer
   #  sql_on: ${google_search.node_id} = ${cmslite_themes.node_id} ;;
