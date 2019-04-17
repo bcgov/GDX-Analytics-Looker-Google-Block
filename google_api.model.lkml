@@ -7,9 +7,6 @@ fiscal_month_offset: 3
 # include all views in this project
 include: "*.view"
 
-# For now, don't include the dashboard we built. There is an editable version in the Shared -> Service BC Folder
-# include: "*.dashboard"
-
 
 explore: google_search {
   join: cmslite_themes {
@@ -40,6 +37,8 @@ explore: google_search {
     field: cmslite_themes.topic_id
     user_attribute: topic
   }
-
-
+  access_filter: {
+    field: cmslite_themes.esb
+    user_attribute: esb
+  }
 }
