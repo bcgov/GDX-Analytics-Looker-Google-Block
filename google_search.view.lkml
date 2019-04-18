@@ -247,4 +247,13 @@ view: google_search {
     type: string
     sql: COALESCE(${TABLE}.topic_id,'') ;;
   }
+
+  dimension: title {
+    sql: COALESCE(${TABLE}.title, ${TABLE}.page) ;;
+    link: {
+      label: "Visit {{ google_search.page._value }}"
+      url: "{{ google_search.page._value }}"
+      icon_url: "https://looker.com/favicon.ico"
+    }
+  }
   }
