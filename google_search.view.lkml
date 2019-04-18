@@ -99,6 +99,17 @@ view: google_search {
         icon_url: "https://looker.com/favicon.ico"
       }
     }
+
+    dimension: splitquery {
+      type: string
+      sql: CASE WHEN ${TABLE}.query LIKE '%child care%' THEN 'child care'
+            WHEN ${TABLE}.query LIKE '%childcare%' THEN 'childcare'
+            WHEN ${TABLE}.query LIKE '%day care%' THEN 'day care'
+            WHEN ${TABLE}.query LIKE '%daycare%' THEN 'daycare'
+          ELSE NULL END
+      ;;
+    }
+
     dimension: country {
       type: string
       drill_fields: [page,query]
