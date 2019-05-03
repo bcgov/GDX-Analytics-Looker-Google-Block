@@ -9,6 +9,11 @@ Looker is a data vision tool that is used with Snowplow Analytics, it displays t
 
 Currently this project is still in development.
 
+## Relevant Repositories
+[GDX-Analytics/](https://github.com/bcgov/GDX-Analytics/)
+
+Represents an instance of Government of British Columbia’s Snowplow tracking. This includes pushing custom events to the Snowplow Tracker, and generation of cryptographically signed SSO embed URL pointing to a dashboard.
+
 ## Getting Help
 
 Please Contact the GDX Service desk via the [GCPE GDX Client Service Desk Portal](https://apps.gcpe.gov.bc.ca/jira/servicedesk/customer/portal/9) for any analytics service help, for inquiries about starting a new analytics account for Government please contact The GDX Analytics team.
