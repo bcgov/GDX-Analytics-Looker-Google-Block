@@ -16,11 +16,11 @@ Represents an instance of Government of British Columbia’s Snowplow tracking. 
 
 ## Getting Help
 
-Please Contact the GDX Service desk via the [GCPE GDX Client Service Desk Portal](https://apps.gcpe.gov.bc.ca/jira/servicedesk/customer/portal/9) for any analytics service help, for inquiries about starting a new analytics account for Government please contact The GDX Analytics team.
+Please contact the GDX Service desk via the [GCPE GDX Client Service Desk Portal](https://apps.gcpe.gov.bc.ca/jira/servicedesk/customer/portal/9) for any analytics service help, for inquiries about starting a new analytics account for Government please contact The GDX Analytics team.
 
 ## Contributors
 
-The GDX analytics team will be the main contributors to this project currently. They will also maintain the code as well.
+The GDX analytics team will be the main contributors to this project currently. They will also maintain the code.
 
 ## License
 
