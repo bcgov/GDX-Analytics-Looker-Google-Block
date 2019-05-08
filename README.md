@@ -1,5 +1,5 @@
 ## GDX Looker Google Block
-This is for the Government of British Columbia’s instance their Google API LookerML project. LookerML is a language for describing dimensions, aggregates, calculations and data relationships in a SQL database
+This is for the Government of British Columbia’s instance their Google API LookML project. LookML is a language for describing dimensions, aggregates, calculations and data relationships in a SQL database
 
 ## Features
 
