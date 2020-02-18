@@ -5,7 +5,7 @@ week_start_day: sunday
 fiscal_month_offset: 3
 
 # include all views in this project
-include: "*.view"
+include: "/Views/*.view"
 
 
 explore: google_search {
