@@ -1,5 +1,15 @@
+include: "/Includes/date_comparisons_common.view"
+
 view: google_search {
   sql_table_name: cmslite.google_pdt ;;
+
+
+  extends: [date_comparisons_common]
+
+  dimension_group: filter_start {
+    sql: ${TABLE}.date ;;
+  }
+
 
     ###
     filter: yesno_filter {
