@@ -3,7 +3,7 @@ This is the Looker project for the Government of British Columbia’s instance t
 
 ## Features
 
-Looker is a data vision tool that is used with Snowplow Analytics, it displays the data in dashboards that a user can customize.
+This Looker project provides views into the underlying database tables storing Google API collected data.
 
 ## Project Status
 
@@ -25,6 +25,7 @@ The GDX analytics team will be the main contributors to this project currently. 
 
 ## License
 
+```
 Copyright 2015 Province of British Columbia
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,3 +38,4 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
+```
