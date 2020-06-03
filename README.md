@@ -1,23 +1,29 @@
-# GDX Looker Google Block
-This is for the Government of British Columbia’s instance their Google API LookerML project. LookerML is a language for describing dimensions, aggregates, calculations and data relationships in a SQL database
+# GDX Analytics Looker Google Block
+This is the Looker project for the Government of British Columbia’s instance their Google API.
 
-# Features
+## Features
 
 Looker is a data vision tool that is used with Snowplow Analytics, it displays the data in dashboards that a user can customize.
 
-# Project Status
+## Project Status
 
-Currently this project is still in development.
+This project is in production and the GDX Analytics Team will continue to update and maintain the project as required.
 
-# Getting Help
+## Related Repositories
 
-Please Contact the GDX Service desk for any analytics service help, for inquiries about starting a new analytics account for Government please contact The GDX Analytics team.
+### [GDX-Analytics/](https://github.com/bcgov/GDX-Analytics)
+ 
+This is the central repository for work by the GDX Analytics Team. 
 
-# Contributors
+## Getting Help or Reporting an Issue
+
+For any questions regarding this project, or for inquiries about starting a new analytics account, please contact the GDX Analytics Team.
+
+## Contributors
 
 The GDX analytics team will be the main contributors to this project currently. They will also maintain the code as well.
 
-# License
+## License
 
 Copyright 2015 Province of British Columbia
 
