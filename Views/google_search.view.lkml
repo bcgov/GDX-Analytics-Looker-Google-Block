@@ -182,6 +182,13 @@ view: google_search {
       group_label: "Counts"
     }
 
+  measure: total_ctr {
+    type: number
+    value_format_name: "percent_2"
+    sql: ${total_clicks}/${total_impressions};;
+    group_label: "Counts"
+  }
+
     measure: average_position {
       type: average
       sql: ${TABLE}.position;;
