@@ -129,6 +129,13 @@ view: google_search {
       type: string
       sql: ${TABLE}.device;;
     }
+
+    dimension: is_mobile {
+      type: yesno
+      description: "True if the viewing device is mobile; False otherwise."
+      sql: ${device} = "MOBILE" ;;
+    }
+
     dimension: page {
       type: string
       sql: ${TABLE}.page;;
@@ -182,7 +189,7 @@ view: google_search {
       group_label: "Counts"
     }
 
-  measure: total_ctr {
+  measure: total_click_through_rate {
     type: number
     value_format_name: "percent_2"
     sql: ${total_clicks}/${total_impressions};;
