@@ -22,6 +22,7 @@ view: google_search {
     }
     dimension: date {
       type:  date
+      drill_fields: [query]
       sql:  ${TABLE}.date ;;
       group_label: "Date"
     }
