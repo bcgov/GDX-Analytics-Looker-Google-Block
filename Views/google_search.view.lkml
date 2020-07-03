@@ -193,6 +193,7 @@ view: google_search {
   measure: total_click_through_rate {
     type: number
     value_format_name: "percent_2"
+    description: "Total Clicks / Total Impressions"
     sql: ${total_clicks}/${total_impressions};;
     group_label: "Counts"
   }
