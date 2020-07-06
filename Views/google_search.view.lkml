@@ -22,6 +22,7 @@ view: google_search {
     }
     dimension: date {
       type:  date
+      drill_fields: [query,page]
       sql:  ${TABLE}.date ;;
       group_label: "Date"
     }
@@ -129,6 +130,13 @@ view: google_search {
       type: string
       sql: ${TABLE}.device;;
     }
+
+    dimension: is_mobile {
+      type: yesno
+      description: "True if the viewing device is mobile; False otherwise."
+      sql: ${device} = "MOBILE" ;;
+    }
+
     dimension: page {
       type: string
       sql: ${TABLE}.page;;
@@ -181,6 +189,14 @@ view: google_search {
       sql: ${TABLE}.impressions;;
       group_label: "Counts"
     }
+
+  measure: total_click_through_rate {
+    type: number
+    value_format_name: "percent_2"
+    description: "Total Clicks / Total Impressions"
+    sql: ${total_clicks}/${total_impressions};;
+    group_label: "Counts"
+  }
 
     measure: average_position {
       type: average
