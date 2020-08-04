@@ -80,7 +80,9 @@ view: cmslite_themes {
   dimension: subtopic {
     description: "The CMS Lite subtopic."
     type: string
-    sql: ${TABLE}.topic ;;
+    sql: COALESCE(${TABLE}.topic, '(no subtopic)') ;;
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.topic
   }
 
   # subtopic ID
@@ -88,7 +90,7 @@ view: cmslite_themes {
   dimension: subtopic_id {
     description: "The alphanumeric CMS Lite subtopic identifier."
     type: string
-    sql: ${TABLE}.topic_id ;;
+    sql: COALESCE(${TABLE}.topic_id,'') ;;
   }
 
   # subsubtopic
@@ -96,7 +98,9 @@ view: cmslite_themes {
   dimension: subsubtopic {
     description: "The CMS Lite subsubtopic."
     type: string
-    sql: ${TABLE}.topic ;;
+    sql: COALESCE(${TABLE}.topic, '(no subsubtopic)') ;;
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.topic
   }
 
   # subsubtopic ID
@@ -104,6 +108,8 @@ view: cmslite_themes {
   dimension: subsubtopic_id {
     description: "The alphanumeric CMS Lite subsubtopic identifier."
     type: string
-    sql: ${TABLE}.topic_id ;;
+    sql: COALESCE(${TABLE}.topic_id,'') ;;
   }
+
+
 }

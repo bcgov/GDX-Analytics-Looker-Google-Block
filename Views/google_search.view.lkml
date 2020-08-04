@@ -290,7 +290,7 @@ view: google_search {
   dimension: subtopic {
     description: "The CMS Lite subtopic."
     type: string
-    sql: COALESCE(${TABLE}.subtopic, '(no subtopic)') ;;
+    sql: COALESCE(${TABLE}.topic, '(no subtopic)') ;;
     drill_fields: [subsubtopic, google_search.query]
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.subtopic
@@ -301,7 +301,7 @@ view: google_search {
   dimension: subtopic_id {
     description: "The alphanumeric CMS Lite subtopic identifier."
     type: string
-    sql: COALESCE(${TABLE}.subtopic_id,'') ;;
+    sql: COALESCE(${TABLE}.topic_id,'') ;;
   }
 
   # subsubtopic
@@ -309,7 +309,7 @@ view: google_search {
   dimension: subsubtopic {
     description: "The CMS Lite subsubtopic."
     type: string
-    sql: COALESCE(${TABLE}.subsubtopic, '(no subsubtopic)') ;;
+    sql: COALESCE(${TABLE}.topic, '(no subsubtopic)') ;;
     drill_fields: [google_search.query]
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.subsubtopic
@@ -320,7 +320,7 @@ view: google_search {
   dimension: subsubtopic_id {
     description: "The alphanumeric CMS Lite subsubtopic identifier."
     type: string
-    sql: COALESCE(${TABLE}.subsubtopic_id,'') ;;
+    sql: COALESCE(${TABLE}.topic_id,'') ;;
   }
 
   dimension: title {
