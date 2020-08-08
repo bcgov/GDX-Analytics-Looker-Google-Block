@@ -227,7 +227,7 @@ view: google_search {
   dimension: theme {
     description: "The CMS Lite theme."
     type: string
-    drill_fields: [subtheme, topic, google_search.query]
+    drill_fields: [subtheme, topic, subtopic, subsubtopic, google_search.query]
     sql: COALESCE(${TABLE}.theme, '(no theme)') ;;
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.theme
@@ -252,7 +252,7 @@ view: google_search {
   dimension: subtheme {
     description: "The CMS Lite subtheme."
     type: string
-    drill_fields: [topic, google_search.query]
+    drill_fields: [topic, subtopic, subsubtopic, google_search.query]
     sql: COALESCE(${TABLE}.subtheme, '(no subtheme)') ;;
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.subtheme
@@ -272,7 +272,7 @@ view: google_search {
     description: "The CMS Lite topic."
     type: string
     sql: COALESCE(${TABLE}.topic, '(no topic)') ;;
-    drill_fields: [google_search.query]
+    drill_fields: [subtopic, subsubtopic, google_search.query]
     suggest_explore: theme_cache
     suggest_dimension: theme_cache.topic
   }
@@ -283,6 +283,44 @@ view: google_search {
     description: "The alphanumeric CMS Lite topic identifier."
     type: string
     sql: COALESCE(${TABLE}.topic_id,'') ;;
+  }
+
+  # subtopic
+  # the CMSL subtopic
+  dimension: subtopic {
+    description: "The CMS Lite subtopic."
+    type: string
+    sql: COALESCE(${TABLE}.subtopic, '(no subtopic)') ;;
+    drill_fields: [subsubtopic, google_search.query]
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.subtopic
+  }
+
+  #subtopic ID
+  # the CMSL subtopic ID
+  dimension: subtopic_id {
+    description: "The alphanumeric CMS Lite subtopic identifier."
+    type: string
+    sql: COALESCE(${TABLE}.subtopic_id,'') ;;
+  }
+
+  # subsubtopic
+  # the CMSL subsubtopic
+  dimension: subsubtopic {
+    description: "The CMS Lite subsubtopic."
+    type: string
+    sql: COALESCE(${TABLE}.subsubtopic, '(no subsubtopic)') ;;
+    drill_fields: [google_search.query]
+    suggest_explore: theme_cache
+    suggest_dimension: theme_cache.subsubtopic
+  }
+
+  #subsubtopic ID
+  # the CMSL subsubtopic ID
+  dimension: subsubtopic_id {
+    description: "The alphanumeric CMS Lite subsubtopic identifier."
+    type: string
+    sql: COALESCE(${TABLE}.subsubtopic_id,'') ;;
   }
 
   dimension: title {
