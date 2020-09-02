@@ -1,4 +1,4 @@
-include: "/Includes/date_comparisons_common.view"
+include: "//snowplow_web_block/Includes/date_comparisons_common.view"
 
 view: google_search {
   sql_table_name: cmslite.google_pdt ;;
