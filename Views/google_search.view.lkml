@@ -20,85 +20,13 @@ view: google_search {
       type: string
       sql:  ${TABLE}.node_id ;;
     }
-    dimension: date {
-      type:  date
-      drill_fields: [query,page]
-      sql:  ${TABLE}.date ;;
-      group_label: "Date"
-    }
-    dimension: week {
-      type:  date_week
-      sql:  ${TABLE}.date ;;
-      group_label: "Date"
-    }
-    dimension: month {
-      type:  date_month_name
-      sql:  ${TABLE}.date ;;
-      group_label: "Date"
-    }
-    dimension: year {
-      type:  date_year
-      sql:  ${TABLE}.date ;;
-      group_label: "Date"
-    }
 
-    dimension: day_of_month {
-      type:  date_day_of_month
-      sql:  ${TABLE}.date ;;
-      group_label: "Date"
-    }
-    dimension: day_of_week {
-      type:  date_day_of_week
-      sql:  ${TABLE}.date ;;
-      group_label: "Date"
-    }
-    dimension: day_of_week_number {
-      type:  date_day_of_week_index
-      sql:  ${TABLE}.date + interval '1 day' ;;
-      group_label: "Date"
-    }
+  dimension_group: google_search {
+    type: time
+    timeframes: [raw, time, minute, minute10, time_of_day, hour_of_day, hour, date, day_of_month, day_of_week, week, month, quarter, year]
+    sql: ${TABLE}.date ;;
 
-
-    dimension: is_weekend {
-      type:  yesno
-      sql:  ${TABLE}.isweekend ;;
-      group_label:  "Date"
-    }
-    dimension: is_holiday {
-      type:  yesno
-      sql:  ${TABLE}.isholiday ;;
-      group_label:  "Date"
-    }
-    dimension: fiscal_year {
-      type:  date_fiscal_year
-      sql:  ${TABLE}.date ;;
-      group_label:  "Date"
-    }
-    dimension: fiscal_month {
-      type:  date_fiscal_month_num
-      sql:  ${TABLE}.date ;;
-      group_label:  "Date"
-    }
-    dimension: fiscal_quarter {
-      type:  date_fiscal_quarter
-      sql:  ${TABLE}.date ;;
-      group_label:  "Date"
-    }
-    dimension: fiscal_quarter_of_year {
-      type:  date_fiscal_quarter_of_year
-      sql:  ${TABLE}.date ;;
-      group_label:  "Date"
-    }
-    dimension: sbc_quarter {
-      type:  string
-      sql:  ${TABLE}.sbcquarter ;;
-      group_label:  "Date"
-    }
-    dimension: last_day_of_pay_period {
-      type: date
-      sql:  ${TABLE}.lastdayofpsapayperiod ;;
-      group_label: "Date"
-    }
+  }
 
     dimension: query {
       type: string
