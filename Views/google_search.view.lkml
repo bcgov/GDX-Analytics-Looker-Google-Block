@@ -273,7 +273,7 @@ view: google_search {
           WHEN lower(SPLIT_PART(SPLIT_PART(SPLIT_PART(${TABLE}.page, '//', 2), '/',2),'.aspx',1)) = 'resources-for' THEN 'Resources For'
           ELSE NULL
         END;;
-    drill_fields: [page]
+    drill_fields: [google_search.page, google_search.query]
     group_label: "WelcomeBC Dimensions"
   }
 
@@ -341,7 +341,7 @@ view: google_search {
           ELSE NULL
         END;;
     group_label: "WelcomeBC Dimensions"
-    drill_fields: [page]
+    drill_fields: [google_search.page, google_search.query]
   }
 
 
