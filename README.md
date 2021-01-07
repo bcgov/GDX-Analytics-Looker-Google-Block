@@ -1,3 +1,4 @@
+[![img](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
 # GDX Analytics Looker Google Block
 This is the Looker project for the Government of British Columbia’s instance their Google API.
 
