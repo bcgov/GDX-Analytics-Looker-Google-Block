@@ -15,6 +15,13 @@ explore: google_search {
   #  relationship: one_to_one
   #}
 
+
+  join: covid_language_matrix {
+    type: left_outer
+    sql_on:  ${google_search.page} = ${covid_language_matrix.translated_url} ;;
+    relationship: many_to_one
+  }
+
   access_filter: {
     field: node_id
     user_attribute: node_id
