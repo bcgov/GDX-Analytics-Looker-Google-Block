@@ -7,6 +7,10 @@ fiscal_month_offset: 3
 # include all views in this project
 include: "/Views/*.view"
 
+# Import translation matrix views
+include: "//snowplow_web_block/Views/covid_language_matrix.view.lkml"
+include: "//snowplow_web_block/Views/embc_language_matrix.view.lkml"
+
 
 explore: google_search {
   #join: cmslite_themes {
@@ -19,6 +23,11 @@ explore: google_search {
   join: covid_language_matrix {
     type: left_outer
     sql_on:  ${google_search.page} = ${covid_language_matrix.translated_url} ;;
+    relationship: many_to_one
+  }
+  join: embc_language_matrix {
+    type: left_outer
+    sql_on:  ${google_search.page} = ${embc_language_matrix.translated_url} ;;
     relationship: many_to_one
   }
 
