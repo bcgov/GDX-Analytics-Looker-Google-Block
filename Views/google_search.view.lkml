@@ -1,7 +1,8 @@
+# Version: 1.1.0
 include: "//snowplow_web_block/Includes/date_comparisons_common.view"
 
 view: google_search {
-  sql_table_name: cmslite.google_pdt ;;
+  sql_table_name: cmslite.google_dt ;;
 
 
   extends: [date_comparisons_common]
