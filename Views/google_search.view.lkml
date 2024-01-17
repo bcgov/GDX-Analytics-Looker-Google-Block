@@ -107,6 +107,12 @@ view: google_search {
       group_label: "Counts"
     }
 
+    dimension: section {
+      type: string
+      sql: COALESCE(SPLIT_PART(${TABLE}.page,'/',4),'') ;;
+      # Note that we need to do the coalesce so that it is compatible with access filters looking for "IS NOT NULL"
+    }
+
 
     measure: total_clicks {
       type: sum
