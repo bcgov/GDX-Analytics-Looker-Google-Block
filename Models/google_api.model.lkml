@@ -53,6 +53,11 @@ explore: google_search {
     field: google_search.topic_id
     user_attribute: topic
   }
+
+  access_filter: {
+    field: google_search.section
+    user_attribute: section
+  }
 }
 
 # hidden theme_cache explore supports suggest_explore for theme and subtheme filters
