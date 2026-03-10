@@ -10,6 +10,7 @@ include: "/Views/*.view"
 # Import translation matrix views
 include: "//snowplow_web_block/Views/covid_language_matrix.view.lkml"
 include: "//snowplow_web_block/Views/embc_language_matrix.view.lkml"
+include: "//snowplow_web_block/Views/epd_lookup.view.lkml"
 
 
 explore: google_search {
@@ -29,6 +30,12 @@ explore: google_search {
     type: left_outer
     sql_on:  ${google_search.page} = ${embc_language_matrix.translated_url} ;;
     relationship: many_to_one
+  }
+
+  join: epd_lookup {
+    type:  left_outer
+    sql_on: ${google_search.node_id} = ${epd_lookup.node_id} ;;
+    relationship: one_to_one
   }
 
   access_filter: {
