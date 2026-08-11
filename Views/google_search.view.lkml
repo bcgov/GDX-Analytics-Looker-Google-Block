@@ -63,7 +63,7 @@ view: google_search {
     dimension: is_mobile {
       type: yesno
       description: "True if the viewing device is mobile; False otherwise."
-      sql: ${device} = "MOBILE" ;;
+      sql: ${device} = 'MOBILE' ;;
     }
 
     dimension: page {
